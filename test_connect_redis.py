@@ -4,7 +4,7 @@ from loguru import logger
 
 
 def connect_redis():
-    r = redis.Redis(host='localhost', port=6380, db=0, username='user', password='user_password', ssl=True, )
+    r = redis.Redis(host='localhost', port=6379, db=0, password='password', ssl=False, )
 
     try:
         info = r.info()
