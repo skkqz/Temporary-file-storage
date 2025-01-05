@@ -1,8 +1,9 @@
 # Temporary-file-storage
+## Временное хранение файлов
 
 ### Запуск celery
 ~~~Python
-celery -A config.celery_app worker --loglevel=INFO -P solo
+celery -A celery_app.task_delete_file.celery_app worker --loglevel=INFO -P solo
 ~~~
 
 ### Запуск doker-compose
