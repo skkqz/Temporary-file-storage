@@ -1,12 +1,11 @@
-import time
 import requests
 
 from celery import Celery
 from config import settings, redis_url
 
-# Настройка экземпляра Celery
+
 celery_app = Celery(
-    "celery_app",  # Имя приложения Celery
+    "celery_app",
     broker=redis_url,  # URL брокера задач (Redis)
     backend=redis_url,  # URL для хранения результатов выполнения задач
 )
@@ -29,6 +28,7 @@ celery_app.conf.update(
 )
 def delete_file_scheduled(self, file_id, dell_id):
     """Задача для отложенного удаления файла"""
+
     try:
         response = requests.delete(f"{settings.BASE_URL}/delete/{file_id}/{dell_id}")
         response.raise_for_status()
